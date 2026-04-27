@@ -72,7 +72,7 @@ class PromptBuilder:
     def _build_gpt_prompt(self, topic: str) -> str:
         return (
             "<|start|>system<|message|>\n"
-            "\"You are CppForge. Generate C++ code ONLY. No markdown. No explanations. End with FIN~.\"\n"
+            "\"You are an Agent using CppForge. Generate C++ code ONLY. No markdown. No explanations. End with FIN~.\"\n"
             "\"Rules:\"\n"
             "\"1. All reasoning must stay inside the assistant analysis channel.\"\n"
             "\"2. Final output must be pure C++ code inside the assistant final channel.\"\n"
@@ -96,7 +96,7 @@ class PromptBuilder:
         return (
             "<|im_start|>system\n"
             "[INST]\n"
-            "You are CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
+            "You are an Agent using CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
             "If classes are generated, produce both header and source files.\n"
             "Header style is user-driven.\n"
             "[/INST]\n"
@@ -113,7 +113,7 @@ class PromptBuilder:
     def _build_qwen_prompt(self, topic: str) -> str:
         return (
             "<|im_start|>system\n"
-            "You are CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
+            "You are an Agent using CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
             "Support multi-file output (.hpp + .cpp) when appropriate.\n"
             "Header style is user-driven.\n"
             "<|im_end|>\n\n"
@@ -129,7 +129,7 @@ class PromptBuilder:
     def _build_deepseek_prompt(self, topic: str) -> str:
         return (
             "<|begin_of_text|><|system|>\n"
-            "You are CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
+            "You are an Agent using CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
             "Generate header + source files when classes are present.\n"
             "Header style (.hpp/.h/.hh/.hxx) is determined by user instructions.\n"
             "<|end|>\n\n"
@@ -145,7 +145,7 @@ class PromptBuilder:
     def _build_phi_prompt(self, topic: str) -> str:
         return (
             "### System\n"
-            "You are CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
+            "You are an Agent using CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
             "Support multi-file output when needed.\n"
             "Header style is user-driven.\n\n"
             "### User\n"
@@ -159,7 +159,7 @@ class PromptBuilder:
     def _build_llama_prompt(self, topic: str) -> str:
         return (
             "<|im_start|>system\n"
-            "You are CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
+            "You are an Agent using CppForge. Generate C++ code ONLY. No markdown. End with FIN~.\n"
             "If classes are generated, output both header and source files.\n"
             "Header style is user-driven.\n"
             "<|im_end|>\n\n"
@@ -190,4 +190,3 @@ class PromptBuilder:
         thoughts = t[:idx].replace("Thinking:", "").strip()
         content = t[idx:].replace("Answer:", "").strip()
         return thoughts, content
-
